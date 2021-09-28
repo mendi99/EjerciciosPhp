@@ -9,10 +9,11 @@
          $arrayAlfabeto = alfabeto();
 
          for($i = 1; $i <= $num1; $i++){
+            echo "<ul><li>$i<ul>";
             for($j = 0; $j < $num2; $j++){
-               echo "piso $i letra ".$arrayAlfabeto[$j]."\t";
+               echo "<li>".$arrayAlfabeto[$j]."</li>";
             }
-            echo "<br>";
+            echo "</ul></li></ul>";
          }
 
          function alfabeto(){
