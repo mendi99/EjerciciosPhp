@@ -4,25 +4,29 @@
    </head>
    <body>
       <?php
-         $fraseUno = "oso";
-         analizarFrase($fraseUno);
+         $fraseUno = "Mierda";
+         if(analizarFrase($fraseUno)){
+            echo "Es palindromo";
+         }else{
+            echo "No es palindromo";
+         }
 
 
          function analizarFrase($frase){
             $fraseBien = array();
             $fraseDelReves = array();
-            for($i = 0; $i < $frase->sizeof(); $i++){
+            for($i = 0; $i < strlen($frase); $i++){
                 $letra = $frase.substr($i, $i+1);
-                if(($letra == " ")){
+                if(($letra != " ")){
                     array_push($fraseBien,$letra);
                 }
             }
-            $contador = $fraseBien->sizeof - 1;
-            for($j = 0; $j < $fraseBien->sizeof; $j++){
-               $fraseDelReves[$j] = $fraseBien[$contador];
+            $contador = sizeof($fraseBien) - 1;
+            for($j = 0; $j < sizeof($fraseBien); $j++){
+               array_push($fraseDelReves,$fraseBien[$contador]);
                $contador--;
             }
-            for($k = 0; $k < $fraseBien->sizeof; $k++){
+            for($k = 0; $k < sizeof($fraseBien); $k++){
                 if(!($fraseBien[$k] == $fraseDelReves[$k])){
                     return false;
                 }
