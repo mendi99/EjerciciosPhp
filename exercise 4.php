@@ -1,38 +1,42 @@
 <html>
-   <head>
-   <title>Prueba de PHP</title>
-   </head>
-   <body>
-      <?php
-         $fraseUno = "Mierda";
-         if(analizarFrase($fraseUno)){
-            echo "Es palindromo";
-         }else{
-            echo "No es palindromo";
-         }
+<head>
+   <title>Exercise4</title> 
+</head>
+<body>
+    <?php
+        class Palindromic {
 
+            private $frase;
+            private $fraseDelReves;
 
-         function analizarFrase($frase){
-            $fraseBien = array();
-            $fraseDelReves = array();
-            for($i = 0; $i < strlen($frase); $i++){
-                $letra = $frase.substr($i, $i+1);
-                if(($letra != " ")){
-                    array_push($fraseBien,$letra);
+            function __construct($frase) {
+                $this->frase = strtolower(str_replace(' ', '', $frase));
+                $this->fraseDelReves = strrev($this->frase);
+            }
+
+            public function analizatePalindromic() {
+                $counter = 0;
+                $length = floor(strlen($this->frase)/2);
+                for ($i = 0; $i < $length; $i++) {
+                    if ($this->frase[$i] == $this->fraseDelReves[$i]) {
+                        $counter++;
+                    }
+                }
+                if ($counter == $length) {
+                    echo "Is palindromic";
+                }
+                else {
+                    echo "Is not palindromic";
                 }
             }
-            $contador = sizeof($fraseBien) - 1;
-            for($j = 0; $j < sizeof($fraseBien); $j++){
-               array_push($fraseDelReves,$fraseBien[$contador]);
-               $contador--;
-            }
-            for($k = 0; $k < sizeof($fraseBien); $k++){
-                if(!($fraseBien[$k] == $fraseDelReves[$k])){
-                    return false;
-                }
-            }
-            return true;
-         }
-      ?>        
-   </body>
+        }
+
+    $frase = "oso";
+
+    $p1 = new Palindromic($frase);
+    $p1->analizatePalindromic();
+
+    ?>
+
+</body>
 </html>
