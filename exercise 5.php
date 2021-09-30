@@ -19,15 +19,20 @@
         function analizarPersona(){
             if($this->age > 6 && $this->age < 10){
                 if($this->alone == 1){
-                    echo "Puedes entrar";
+                    echo "Puedes entrar1";
                 }else{
-                    echo "No puedes entrar";
+                    echo "No puedes entrar1";
                 }
+            }else if($this->age > 9 || $this->height > 119){
+                echo "Puedes entrar2";
+            }else{
+                echo "No puedes entrar2";
             }
         }
     }
 
-    $p1 = new Person(7, 5, 0);
+    $p1 = new Person(5, 0, 1);
+    $p1->analizarPersona();
 
     ?>
 
