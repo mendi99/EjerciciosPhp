@@ -20,17 +20,26 @@
             }
 
             function rellenarArray(){
-                $this->arrayPalabras = explode($this->str);
+                $this->arrayPalabras = explode(" ", $this->str);
             }
 
             function rellenarBueno(){
                 for($i = 0; $i < sizeof($this->arrayPalabras); $i++){
-                    array_push($arrayBueno, $arrayPalabras[$i]);
+                    $this->arrayBueno[$this->arrayPalabras[$i]] = strlen($this->arrayPalabras[$i]);
+                }
+            }
+
+            function imprimirArray(){
+                foreach($this->arrayBueno as $key=>$value){
+                    echo "<p>$key $value</p>";
                 }
             }
         }
-        $t1 = new Table(5,4);
-        $t1->imprimirSolucion();
+        $t1 = new Analizador("manzana pera limón sandía melón");
+        $t1->rellenarArray();
+        $t1->rellenarBueno();
+        $t1->imprimirArray();
+        
       ?>        
    </body>
 </html>
