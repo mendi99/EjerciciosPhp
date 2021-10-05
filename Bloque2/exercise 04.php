@@ -40,6 +40,6 @@
         $t1->rellenarBueno();
         $t1->imprimirArray();
         
-      ?>        
+      ?>
    </body>
 </html>
