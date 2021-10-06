@@ -13,29 +13,32 @@
         
         class Agenda{
 
-            private $information;
             private $informationArray = array();
 
             function __construct($info){
                 if(empty($info)){
-                    $this->information = $_POST["nombre"] + $_POST["email"];
+                    $this->informationArray[$_POST["nombre"]] = $_POST["email"];
+                    
+                }else{
+                    $this->informationArray[$_POST["nombre"]] = $_POST["email"];
                 }
-            }
-
-            function rellenarArray(){
-                $this->informationArray = explode(",", $this->information);
             }
 
             function imprimirArray(){
-                echo $this->information;
+                print_r($this->informationArray);
+                /*
                 foreach($this->informationArray as $key=>$value){
                     echo "$key / $value";
                 }
+                */
+            }
+
+            function guardarInfo(){
+                
             }
         }
         
         $agenda = new Agenda($_POST["izkutatuta"]);
-        $agenda->rellenarArray();
         $agenda->imprimirArray();
 
       ?>

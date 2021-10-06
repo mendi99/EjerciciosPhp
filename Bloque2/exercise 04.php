@@ -2,9 +2,6 @@
    <head>
    <title>Prueba de PHP</title>
    <style>
-    table,tr,td{
-        border: 1px black solid;
-    }
     </style>
    </head>
    <body>
