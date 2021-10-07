@@ -10,6 +10,7 @@
             if(!empty($_POST["mes"])){
                 $mes = $_POST["mes"];
                 $name = $_POST["name"];
+                echo "$mes $name";
             }
 
       ?>
@@ -30,7 +31,7 @@
             </select>
             <p>Name: <input type="text" name="name"></p>
             <input type="hidden" value="<?php
-                echo "$mes $name";
+                
             
             ?>" name="izkutatuta">
             <p><input type="submit" value="Enviar"></p>
