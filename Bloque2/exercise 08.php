@@ -8,16 +8,19 @@
   
       <?php
 
+        class BuscadorArchivo{
 
-        function buscarArchivo(){
-            try{
-                file_exists("config.php");
-            }catch (Exception $e){
-                echo "No existe";
+            function __construct($fileName){
+                if(!file_exists($fileName)){
+                    throw new Exception("The file doesn't exists");
+                }else{
+                    echo "The file exists";
+                }
             }
+
         }
 
-        buscarArchivo();
+        $b1 = new BuscadorAchivo("config.php");
 
 
       ?>
