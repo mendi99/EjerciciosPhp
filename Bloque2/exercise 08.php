@@ -8,11 +8,11 @@
   
       <?php
 
-        class BuscadorArchivo{
+        class BuscadorAchivo{
 
             function __construct($fileName){
                 if(!file_exists($fileName)){
-                    throw new Exception("The file doesn't exists");
+                    echo "The file doesn't exists";
                 }else{
                     echo "The file exists";
                 }

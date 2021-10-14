@@ -11,7 +11,7 @@
             class Cumpleaños{
                 private $arrayBueno = array();
                 private $meses = array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
-                private $nombres = array(array("Mikel", "Agosto"), array("Ainara", "Enero"), array("Ibai", "Febrero"), array("Haizea", "Marzo"), array("Xabi", "Enero"));
+                private $nombres = array(array("Mikel", "Agosto"), array("Ainara", "Enero"), array("Ibai", "Diciembre"), array("Haizea", "Junio"), array("Xabi", "Enero"));
 
 
 
@@ -26,8 +26,17 @@
                 }
 
                 function imprimirArray(){
-                    foreach($this->arrayBueno as $key=>$value){
-                        
+                    for($i = 0; $i < sizeof($this->meses); $i++){
+                        if(array_key_exists($this->meses[$i], $this->arrayBueno)){
+                            $value = $this->arrayBueno[$this->meses[$i]];
+                            $mes = $this->meses[$i];
+                            echo "<ul><li>$mes<ul>";
+                            for($j = 0; $j < sizeof($value); $j++){
+                                echo "<li>".$value[$j]."</li>";
+                            }
+                            echo "</ul></li></ul>";
+                            
+                        }
                     }
                 }
 
