@@ -21,7 +21,7 @@
             }
 
             function getArea(){
-                return $this->side *= 2;
+                return pow($this->side, 2);
             }
 
         }
