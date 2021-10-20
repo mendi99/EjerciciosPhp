@@ -27,7 +27,7 @@
             }
 
             function fullName(){
-                $result = "User: " . parent::fullName() . "<br>";
+                $result = "User: " . $this->getName() . $this->getLastName() . "<br>";
                 return $result;
             }
 

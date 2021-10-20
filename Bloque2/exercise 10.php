@@ -34,7 +34,7 @@
             }
 
             function fullName(){
-                echo "Persona: " . $this->getName() . " " . $this->getLastName();
+                return "Persona: " . $this->getName() . " " . $this->getLastName();
             }
         }
 
