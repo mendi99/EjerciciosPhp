@@ -6,46 +6,41 @@
 </head>
 
 <body>
-
     <?php
-    class agenda1
+    class agenda3
     {
-        private $agenda;
-
-
-        public function __construct($array = null)
+        private $agenda = array();
+        public function __construct($session = null)
         {
-            if ($array == null) {
+            if ($session == null) {
                 $this->agenda = array();
+                $_SESSION['agenda'] = json_encode($this->agenda);
             } else {
-                $this->agenda = json_decode($_POST['array'], true);
+                $this->agenda = $session;
             }
         }
-
 
         public function addContact($nombre, $email)
         {
             $keyExit = $this->keyExist($nombre);
             $checkEmail = $this->checkEmail($email);
-            if (!$keyExit && $checkEmail) {
+            if ($keyExit == null && $checkEmail) {
                 $this->agenda[$nombre] = $email;
-            } else if ($keyExit && $checkEmail) {
-                $this->agenda[$nombre] = $email;
+            } else if ($keyExit != null && $checkEmail) {
+                $this->agenda[$keyExit] = $email;
             }
         }
-
 
         private function keyExist($nombre)
         {
             $keys = array_keys($this->agenda);
             foreach ($keys as $key) {
                 if (strtolower($key) == strtolower($nombre)) {
-                    return true;
+                    return $key;
                 }
             }
-            return false;
+            return null;
         }
-
 
         private function checkEmail($email)
         {
@@ -54,12 +49,12 @@
             }
             return false;
         }
-        
+
         public function setAgenda()
         {
-            $string = json_encode($this->agenda);
-            return $string;
+            $_SESSION['agenda'] = json_encode($this->agenda);
         }
+
         public function seeArray()
         {
             $string = '<table><tr><td style=font-weight:bold;>Name</td><td style=font-weight:bold;>E-mail</td></tr>';
@@ -70,33 +65,39 @@
             echo $string;
         }
     }
-    
+    ?>
+    <?php
+    session_start();
     $result = '';
-    if (!isset($_POST['array'])) {
-        $obj = new agenda1();
+    if (!isset($_SESSION['agenda'])) {
+        $obj = new agenda3();
     } else {
-        $obj = new agenda1($_POST['array']);
+        $obj = new agenda3(json_decode($_SESSION['agenda'], true));
         if (empty($_POST['nombre'])) {
-            $result = '<h4 style=color:red;>The name is empty</h4>';
+            $result = '<h4 style=color:red;>El nombre esta vacio</h4>';
         } else {
             $name = htmlentities($_POST['nombre']);
             if (isset($_POST['email']) && !empty($_POST['email'])) {
                 $email = htmlentities($_POST['email']);
-                $obj->addContact($name, $email);
+                $result = $obj->addContact($name, $email);
             }
         }
     }
+    $obj->setAgenda();
     ?>
-    <form method="POST">
-        <label>Nombre:</label><br>
-        <input type="text" name="nombre" value=<?php echo isset($_POST['nombre']) ? $_POST['nombre'] : ''; ?> ><br>
-        <label>Email:</label><br>
-        <input type="email" name="email" value=<?php echo isset($_POST['email']) ? $_POST['email'] : ''; ?> ><br>
-        <input type="submit" />
-        <input type="hidden" name="array" value=<?php echo $obj->setAgenda(); ?> />
-    </form>
+    <div id="userform">
+        <form method="POST">
+            <label>Nombre:</label><br>
+            <input type="text" name="nombre"><br>
+            <label>Email:</label><br>
+            <input type="email" name="email"><br>
+            <input type="submit" name="submit" />
+        </form>
+    </div>
     <?php
-    echo $result;
+    if (isset($_POST['submit'])) {
+        echo $result;
+    }
     $obj->seeArray();
 
     ?>
