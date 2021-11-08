@@ -12,15 +12,18 @@
 
             function __construct($fileName){
                 if(!file_exists($fileName)){
-                    echo "The file doesn't exists";
-                }else{
-                    echo "The file exists";
+                    throw new Exception('The file doesnt exist');
                 }
             }
 
         }
+        try{
+            $b1 = new BuscadorAchivo("config.php");
+            echo "The file does exist";
+        }catch (Exception $e){
 
-        $b1 = new BuscadorAchivo("config.php");
+            echo $e->getMessage();
+        }
 
 
       ?>
