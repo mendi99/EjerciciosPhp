@@ -13,29 +13,29 @@
 
             private $puntos;
 
-            function __construct($name, $lastName, $dni, $puntos){
+            public function __construct($name, $lastName, $dni, $puntos){
                 parent::__construct($name, $lastName, $dni);
                 $this->puntos = $puntos;
             }
            
-            function getPuntos(){
+            public function getPuntos(){
                 return $this->puntos;
             }
 
-            function setPuntos($valor){
+            public function setPuntos($valor){
                 $this->puntos = $valor;
             }
 
-            function fullName(){
-                $result = "User: " . $this->getName() . $this->getLastName() . "<br>";
+            public function fullName(){
+                $result = "User: " . Parent::getName(). " " . Parent::getLastName() . " con dni: " . Parent::getDni()." tiene ".$this->puntos." puntos.<br>";
                 return $result;
             }
 
-            function analizarPuntos(){
+            public function analizarPuntos(){
                 if($this->puntos >= 100){
-                    echo "Tiene mas de 100 puntos";
+                    echo " Tiene mas de 100 puntos";
                 }else{
-                    echo "Tiene menos de 100 puntos";
+                    echo " Tiene menos de 100 puntos";
                 }
             }
         }
@@ -50,8 +50,7 @@
             <p><input type="submit" value="Enviar" name="enviar"></p>
         </form>
         <?php
-            $is = isset($_POST["enviar"]);
-            if($is){
+            if(isset($_POST["enviar"])){
                 $u = new User($_POST["nombre"], $_POST["apellido"], $_POST["dni"], $_POST["puntos"]);
                 echo $u->fullName();
                 $u->analizarPuntos();

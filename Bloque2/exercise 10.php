@@ -14,26 +14,37 @@
             private $lastName;
             private $dni;
 
-            function __construct($name, $lastName, $dni){
+            public function __construct($name, $lastName, $dni){
                 $this->name = $name;
                 $this->lastName = $lastName;
                 $this->dni = $dni;
             }
            
-            function getName(){
+            public function getName(){
                 return $this->name;
             }
 
-            function getLastName(){
+            public function setName($name){
+                $this->name = $name;
+            }
+
+            public function getLastName(){
                 return $this->lastName;
             }
 
+            public function setLastName($lastName){
+                $this->lastName = $lastName;
+            }
 
-            function getDni(){
+            public function getDni(){
                 return $this->dni;
             }
 
-            function fullName(){
+            public function setDni($dni){
+                $this->dni = $dni;
+            }
+
+            public function fullName(){
                 return "Persona: " . $this->getName() . " " . $this->getLastName();
             }
         }
