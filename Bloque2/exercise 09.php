@@ -13,9 +13,9 @@
             private $side;
 
             function __construct($value){
-                if($value <= 0){
+                if ($value <= 0){
                     throw new Exception();
-                }else{
+                } else{
                     $this->side = $value; 
                 }
             }
@@ -26,8 +26,8 @@
 
         }
 
-        for($i = 0; $i < 5; $i++){
-            try{
+        for ($i = 0; $i < 5; $i++){
+            try {
                 $s = new Square(rand(-5, 20));
                 echo $s->getArea()."<br>";
             }catch (Exception $e){

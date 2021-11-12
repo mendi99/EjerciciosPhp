@@ -10,17 +10,17 @@
 
         class BuscadorAchivo{
 
-            function __construct($fileName){
+            function __construct ($fileName){
                 if(!file_exists($fileName)){
                     throw new Exception('The file doesnt exist');
                 }
             }
 
         }
-        try{
+        try {
             $b1 = new BuscadorAchivo("config.php");
             echo "The file does exist";
-        }catch (Exception $e){
+        } catch (Exception $e){
 
             echo $e->getMessage();
         }

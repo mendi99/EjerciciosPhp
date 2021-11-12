@@ -8,7 +8,7 @@
   
       <?php
 
-            class Cumpleaños{
+            class Cumpleaños {
                 private $arrayBueno = array();
                 private $meses = array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
                 private $nombres = array(array("Mikel", "Agosto"), array("Ainara", "Enero"), array("Ibai", "Diciembre"), array("Haizea", "Junio"), array("Xabi", "Enero"));
